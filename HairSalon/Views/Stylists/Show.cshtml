@@ -1,19 +1,23 @@
-<!-- <h1>Best Restaurants</h1>
+@using HairSalon.Models;
+
+<h1>Big Dreams, Big Hair Salon</h1>
 
 <ol>
 @if (Model.Count == 0)
 {
-  <p>No restaurants have been added yet!</p>
+  <p>Please go back to add a stylist!</p>
 }
 @if (Model.Count != 0)
 {
-  @foreach (var restaurant in  @Model["restaurants"])
+  @foreach (Stylist stylist in @Model)
   {
-    <li><a href="/cuisine/@Model["cuisine"].Id/restaurant/@restaurant.Id">@restaurant.GetCuisine().Type</a></li>
+    <li><strong>@stylist.Name</strong>
+      <br>@stylist.specialty
+    </li>
   }
 }
 </ol>
 
-<a href="/cuisine/@Model["cuisine"].Id/restaurant/new">Add a new restaurant</a>
-<a href="/cuisine">Return to cuisines</a>
-<a href="/">Return to home</a> -->
+<a href="/stylists/@Model["stylists"].Id/clients/new">Add a new client</a>
+<a href="/stylists">Return to stylists</a>
+<a href="/">Return to home</a>

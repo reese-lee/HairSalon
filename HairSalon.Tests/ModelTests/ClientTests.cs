@@ -56,11 +56,9 @@ namespace HairSalon.Tests
     public void GetAll_ReturnsClients_ClientList()
     {
       //Arrange
-      string name01 = "Jody Han";
-      string name02 = "Mindy Goh";
-      Client newClient1 = new Client(name01, 1, 2);
+      Client newClient1 = new Client("Lydia Goh", 1, 2);
       newClient1.Save();
-      Client newClient2 = new Client(name02, 2, 3);
+      Client newClient2 = new Client("Nancy Wing", 2, 3);
       newClient2.Save();
       List<Client> newList = new List<Client> { newClient1, newClient2 };
 
