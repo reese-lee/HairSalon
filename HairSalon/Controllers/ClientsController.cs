@@ -12,8 +12,8 @@ namespace HairSalon.Controllers
     public ActionResult Index()
     {
       // Animal newAnimal = new Animal();
-      List<Client> allRest = Client.GetAll();
-      return View(allRest);
+      List<Client> allClients = Client.GetAll();
+      return View(allClients);
     }
 
     // [HttpGet("/clients/{id}/new")]
