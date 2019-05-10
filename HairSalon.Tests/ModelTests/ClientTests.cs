@@ -8,7 +8,6 @@ namespace HairSalon.Tests
   [TestClass]
   public class ClientTest : IDisposable
   {
-
     public void Dispose()
     {
       Client.ClearAll();

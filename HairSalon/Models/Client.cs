@@ -135,7 +135,6 @@ namespace HairSalon.Models
         }
     }
 
-
     public void Edit(string newName)
     {
       MySqlConnection conn = DB.Connection();
