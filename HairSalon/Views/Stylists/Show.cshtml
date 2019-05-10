@@ -1,0 +1,19 @@
+<!-- <h1>Best Restaurants</h1>
+
+<ol>
+@if (Model.Count == 0)
+{
+  <p>No restaurants have been added yet!</p>
+}
+@if (Model.Count != 0)
+{
+  @foreach (var restaurant in  @Model["restaurants"])
+  {
+    <li><a href="/cuisine/@Model["cuisine"].Id/restaurant/@restaurant.Id">@restaurant.GetCuisine().Type</a></li>
+  }
+}
+</ol>
+
+<a href="/cuisine/@Model["cuisine"].Id/restaurant/new">Add a new restaurant</a>
+<a href="/cuisine">Return to cuisines</a>
+<a href="/">Return to home</a> -->
