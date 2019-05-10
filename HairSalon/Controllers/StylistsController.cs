@@ -3,7 +3,7 @@ using HairSalon.Models;
 using System.Collections.Generic;
 using System;
 
-namespace Stylists.Controllers
+namespace HairSalon.Controllers
 {
   public class StylistsController : Controller
   {
@@ -22,19 +22,23 @@ namespace Stylists.Controllers
     }
 
     [HttpPost("/stylists")]
-    public ActionResult Create(string name, string specialty)
+    public ActionResult Create(string name, string specialty, int id)
     {
-      Stylist myStylists = new Stylist(name, specialty);
-      myStylists.Save();
-      return RedirectToAction("Index");
+      Stylist newStylist = new Stylist(name, specialty, id);
+      newStylist.Save();
+      List<Stylist> myStylists = Stylist.GetAll();
+      return RedirectToAction("Index", myStylists);
     }
 
     [HttpGet("/stylists/{id}")]
-    public ActionResult Show(string name, string specialty, int id)
+    public ActionResult Show(int id)
     {
-      Stylist newStylist = new Stylist(name, specialty, id);
-      // List<Stylist> allStylists = Stylist.GetAll();
-      return View();
+      Dictionary<string, object> model = new Dictionary <string, object>();
+      Stylist newStylist = Stylist.Find(id);
+      List<Stylist> myStylists = Stylist.GetAll();
+      model.Add("stylist", newStylist);
+      model.Add("clients", "stylistClients")
+      return View(model);
     }
 
     // [HttpPost("/stylists/{id}/restaurant")]
