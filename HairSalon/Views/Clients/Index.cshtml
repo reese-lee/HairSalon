@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Big Dreams, Big Hair Salon</title>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='~/css/styles.css' type="text/css">
+  </head>
+  <body>
+    <h1></h1>
+    <h3>Add a new client for <strong>@Model["stylists"].Name</strong></h3>
+    <form action="/stylists/@Model["stylists"].Id/clients/new" method="post">
+      <input id="stylistId" name="stylistId" type="hidden" value="@Model.Id">
+      <label for="name">Add client name:</label>
+      <input id="name" name="name" type="text">
+
+      <button type="submit">Add this awesome client</button>
+    </form>
+
+    <a href="/stylists/@Model.Id">Back to @Model["stylists"].Id</a>
+    <a href="/stylists">All stylists</a>
+
+  </body>
+</html>

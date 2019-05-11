@@ -7,13 +7,23 @@ namespace HairSalon.Controllers
 {
   public class ClientsController : Controller
   {
-
-    [HttpGet("/clients/")]
-    public ActionResult Index()
+    [HttpPost("/stylists/{id}/clients/new")]
+    public ActionResult New(int stylistId)
     {
-      // Animal newAnimal = new Animal();
-      List<Client> allClients = Client.GetAll();
-      return View(allClients);
+      Stylist newStylist = Stylist.Find(stylistId);
+      // Client myClient = new Client(name, stylistId, id);
+      return View(newStylist);
+    }
+
+    [HttpGet("/stylists/{stylistId}/clients/{clientId}")]
+    public ActionResult New(int stylistId, int clientId)
+    {
+      Client client = Client.Find(clientId);
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Stylist stylist = Stylist.Find(stylistId);
+      model.Add("client", client);
+      model.Add("stylist", stylist);
+      return View(model);
     }
 
     // [HttpGet("/clients/{id}/new")]
@@ -24,9 +34,9 @@ namespace HairSalon.Controllers
 
 
     // [HttpPost("/clients")]
-    // public ActionResult Create(string name, string address, string phoneNumber, int clientId)
+    // public ActionResult Create(string name, int stylistId, int id)
     // {
-    //   Client myClient = new Client(name, address, phoneNumber, clientId);
+    //   Client myClient = new Client(name, stylistId, id);
     //   myClient.Save();
     //   return RedirectToAction("Index");
     // }

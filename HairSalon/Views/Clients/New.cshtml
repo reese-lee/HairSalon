@@ -1,25 +1,25 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>My favorite restaurant</title>
+    <title>Big Dreams, Big Hair Salon</title>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='~/css/styles.css' type="text/css">
   </head>
   <body>
     <h1></h1>
-    <h3>Add a new restaurant for this cuisine: <strong>@Model.Type</strong></h3>
-    <form action="/restaurant" method="post">
-      <input id="cuisineId" name="cuisineId" type="hidden" value="@Model.Id">
-      <label for="name">Add its name:</label>
+    <h3>Add a new client for <strong>@Model["stylists"].Name</strong></h3>
+    <form action="/stylists/@Model["stylists"].Id/clients/new" method="post">
+      <input id="stylistId" name="stylistId" type="hidden" value="@Model.Id">
+      <label for="name">Add client name:</label>
       <input id="name" name="name" type="text">
-      <label for="address">Add its address:</label>
-      <input id="address" name="address" type="text">
-      <label for="phoneNumber">Add its phoneNumber:</label>
-      <input id="phoneNumber" name="phoneNumber" type="text">
 
-      <button type="submit">Add this awesome restaurant</button>
+      <button type="submit">Add this awesome client</button>
     </form>
 
-    <a href="/restaurant/@Model.Id">VIEW RESTAURANTS</a>
+    <a href="/stylists/@Model.Id">Back to @Model["stylists"].Id</a>
+    <a href="/stylists">All stylists</a>
 
   </body>
-</html> -->
+</html>
+<!-- for new client under stylist -->

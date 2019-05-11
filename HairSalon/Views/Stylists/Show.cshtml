@@ -13,19 +13,22 @@
 
       <h1>Big Dreams, Big Hair Salon</h1>
       <em>See your selected stylist and their details here:</em>
-
+      <h5>@Model["stylists"].Name</h5>
+      <h6>Specialty: @Model["stylists"].Specialty</h6>
+      <h6>Client list:</h6>
     <ol>
-    @if (Model.Count == 0)
+    @if (Model["clients"].Count == 0)
     {
-      <p>Please go back to add a stylist.</p>
+      <p>Please add a client.</p>
     }
-    @if(Model.Count != 0)
+    @if(Model["clients"].Count != 0)
     {
+      <p>Clients:</p>
       @foreach (var client in @Model["clients"])
       {
-        <!-- <li> -->
-          <h5>@Model["stylists"].Id</h5>
-          <!-- <a href="/stylists/@Model["stylists"].Id" class="btn btn-dark">@client.Name</a></li> -->
+        <li>
+          @Model["clients"].Name
+        </li>
       }
     }
     </ol>

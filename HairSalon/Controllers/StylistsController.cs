@@ -41,11 +41,24 @@ namespace HairSalon.Controllers
       return View(model);
     }
 
-    // [HttpPost("/stylists/{id}/restaurant")]
-    // public ActionResult New(string name, string address, string phoneNumber, int stylistsId)
+    [HttpPost("/stylists/{id}/clients")]
+    public ActionResult Create(string name, int stylistId, int id)
+    {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        Stylist selectedStylist = Stylist.Find(stylistId);
+        Client newClient = new Client(name, stylistId, id);
+        newClient.Save();
+        List<Client> myClients = selectedStylist.GetClients();
+        model.Add("clients", myClients);
+        model.Add("stylists", selectedStylist);
+        return View("Show", model);
+    }
+
+    // [HttpGet("/stylists/{stylistId}/clients/new")]
+    // public ActionResult New(string name, int stylistId, int id)
     // {
-    //   Restaurant myRestaurant = new Restaurant(name, address, phoneNumber, stylistsId);
-    //   return RedirectToAction("Index");
+    //   Client myClient = new Client(name, stylistId, id);
+    //   return RedirectToAction();
     // }
 
     // [HttpGet("/animals/SortByType")]
