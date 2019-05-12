@@ -20,9 +20,9 @@ namespace HairSalon.Controllers
     {
       Client client = Client.Find(clientId);
       Dictionary<string, object> model = new Dictionary<string, object>();
-      Stylist stylist = Stylist.Find(stylistId);
-      model.Add("client", client);
-      model.Add("stylist", stylist);
+      Stylist selectedStylist = Stylist.Find(stylistId);
+      model.Add("clients", client);
+      model.Add("stylists", selectedStylist);
       return View(model);
     }
 
