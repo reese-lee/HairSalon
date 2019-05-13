@@ -73,16 +73,17 @@ namespace HairSalon.Models
       searchId.Value = id;
       cmd.Parameters.Add(searchId);
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
-      string name = "";
-      int stylistId = 0;
+      int clientId = 0;
+      string clientName = "";
+      int clientStylistId = 0;
 
       while(rdr.Read())
       {
-        id = rdr.GetInt32(0);
-        name = rdr.GetString(1);
-        stylistId = rdr.GetInt32(2);
+        clientId = rdr.GetInt32(0);
+        clientName = rdr.GetString(1);
+        clientStylistId = rdr.GetInt32(2);
       }
-      Client newClient = new Client(name, stylistId, id);
+      Client newClient = new Client(clientName, clientStylistId, clientId);
       conn.Close();
       if (conn != null)
       {
@@ -135,33 +136,33 @@ namespace HairSalon.Models
         }
     }
 
-    public void Edit(string newName)
-    {
-      MySqlConnection conn = DB.Connection();
-      conn.Open();
-      var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"UPDATE clients SET name = @newName WHERE id = @searchId;";
-
-      MySqlParameter searchId = new MySqlParameter();
-      searchId.ParameterName = "@searchId";
-      searchId.Value = Id;
-      cmd.Parameters.Add(searchId);
-
-      MySqlParameter name = new MySqlParameter();
-      name.ParameterName = "@newName";
-      name.Value = newName;
-
-      cmd.Parameters.Add(name);
-      cmd.ExecuteNonQuery();
-      Name = newName;
-
-      conn.Close();
-
-      if (conn != null)
-      {
-        conn.Dispose();
-      }
-    }
+    // public void Edit(string newName)
+    // {
+    //   MySqlConnection conn = DB.Connection();
+    //   conn.Open();
+    //   var cmd = conn.CreateCommand() as MySqlCommand;
+    //   cmd.CommandText = @"UPDATE clients SET name = @newName WHERE id = @searchId;";
+    //
+    //   MySqlParameter searchId = new MySqlParameter();
+    //   searchId.ParameterName = "@searchId";
+    //   searchId.Value = Id;
+    //   cmd.Parameters.Add(searchId);
+    //
+    //   MySqlParameter name = new MySqlParameter();
+    //   name.ParameterName = "@newName";
+    //   name.Value = newName;
+    //
+    //   cmd.Parameters.Add(name);
+    //   cmd.ExecuteNonQuery();
+    //   Name = newName;
+    //
+    //   conn.Close();
+    //
+    //   if (conn != null)
+    //   {
+    //     conn.Dispose();
+    //   }
+    // }
 
  }
 }

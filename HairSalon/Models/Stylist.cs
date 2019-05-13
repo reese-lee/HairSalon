@@ -51,7 +51,7 @@ namespace HairSalon.Models
       specialty.ParameterName = "@specialty";
       specialty.Value = this.Specialty;
       cmd.Parameters.Add(specialty);
-      //
+
       MySqlParameter id = new MySqlParameter();
       id.ParameterName = "@id";
       id.Value = this.Id;

@@ -1,3 +1,5 @@
+@using HairSalon.Models
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,8 +13,22 @@
     <h3>Add a new client for <strong>@Model["stylists"].Name</strong></h3>
     <p>@Model["clients"].Name</p>
 
+    <ul>
+    @if (Model.Count == 0)
+    {
+      <p>Please add a client.</p>
+    }
+    @if(Model.Count != 0)
+    {
+      @foreach (Client client in Model)
+      {
+        <li><a href="/clients/@client.Id">@client.Name</a></li>
+      }
+    }
+    </ul>
 
-    <a href="/stylists/@Model["stylists"].Id">Back to @Model["stylists"].Id</a>
+
+    <a href="/stylists/@Model["stylist"].Id">Back to @Model["stylist"].Id</a>
     <a href="/stylists">All stylists</a>
 
   </body>

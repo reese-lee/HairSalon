@@ -36,12 +36,12 @@ namespace HairSalon.Controllers
       Dictionary<string, object> model = new Dictionary <string, object>();
       Stylist newStylist = Stylist.Find(id);
       List<Client> myClients = newStylist.GetClients();
-      model.Add("stylists", newStylist);
+      model.Add("stylist", newStylist);
       model.Add("clients", myClients);
       return View(model);
     }
 
-    [HttpPost("/stylists/{id}/clients")]
+    [HttpPost("/stylists/{stylistId}/clients")]
     public ActionResult Create(string name, int stylistId, int id)
     {
         Dictionary<string, object> model = new Dictionary<string, object>();

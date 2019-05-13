@@ -9,77 +9,23 @@ namespace HairSalon.Controllers
   {
     // routes to new client page
     [HttpGet("/stylists/{stylistId}/clients/new")]
-    public ActionResult New(string name, int stylistId, int id)
+    public ActionResult New(int stylistId)
     {
-      Stylist selectedStylist = Stylist.Find(stylistId);
-      Client client = new Client(name, stylistId, id);
-      client.Save();
-      Client.Find(stylistId);
-      Dictionary<string, object> model = new Dictionary<string, object>();
-      model.Add("clients", client);
-      model.Add("stylists", selectedStylist);
-      return View("Show", model);
+      Stylist stylist = Stylist.Find(stylistId);
+      return View(stylist);
     }
 
     // routes to new client's page
-    [HttpPost("/stylists/{id}/clients/{clientId}")]
-    public ActionResult Show(string name, int stylistId, int id)
+    [HttpGet("/stylists/{id}/clients/{clientId}")]
+    public ActionResult Show(int stylistId, int clientId)
     {
-      // Stylist selectedStylist = Stylist.Find(stylistId);
-      // Client client = new Client(name, stylistId, id);
-      // client.Save();
-      // Dictionary<string, object> model = new Dictionary<string, object>();
-      // model.Add("clients", client);
-      // model.Add("stylists", selectedStylist);
-      return View();
+      Client client = Client.Find(clientId);
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Stylist stylist = Stylist.Find(stylistId);
+      model.Add("client", client);
+      model.Add("stylist", stylist);
+      return View(model);
     }
 
-    // [HttpGet("/stylists/{id}/clients/{clientId}")]
-    // public ActionResult New(string name, int stylistId, int id)
-    // {
-    //
-    //   Stylist selectedStylist = Stylist.Find(stylistId);
-    //   Client client = new Client(name, stylistId, id);
-    //   client.Save();
-    //   Dictionary<string, object> model = new Dictionary<string, object>();
-    //   model.Add("clients", client);
-    //   model.Add("stylists", selectedStylist);
-    //   return View(model);
-    // }
-
-
-    // [HttpGet("/clients/{id}/new")]
-    // public ActionResult New(int id)
-    // {
-    //   return View(Stylist.Find(id));
-    // }
-
-
-    // [HttpPost("/clients")]
-    // public ActionResult Create(string name, int stylistId, int id)
-    // {
-    //   Client myClient = new Client(name, stylistId, id);
-    //   myClient.Save();
-    //   return RedirectToAction("Index");
-    // }
-
-    // [HttpGet("/client/{clientId}/clients/{clientsId}")]
-    // public ActionResult Show(int clientId, int clientsId)
-    // {
-    //     Client clients = Client.Find(clientsId);
-    //     Dictionary<string, object> model = new Dictionary<string, object>();
-    //     Client client = Client.Find(clientId);
-    //     model.Add("clients", clients);
-    //     model.Add("client", client);
-    //     return View(model);
-    // }
-
-    // [HttpGet("/animals/SortByType")]
-    // public ActionResult SortByType()
-    // {
-    //   // Animal newAnimal = new Animal();
-    //   List<Animal> allSortedAnimals = Animal.SortByType();
-    //   return View(allSortedAnimals);
-    // }
   }
 }

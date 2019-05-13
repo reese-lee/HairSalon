@@ -8,14 +8,15 @@
   </head>
   <body>
     <h1></h1>
-    <h3>Add a new client for <strong>@Model["stylists"].Name</strong></h3>
-    <form action="/stylists/@Model["stylists"].Id/clients/new" method="post">
-      <label for="name">Add client name:</label>
-      <input id="name" name="name" type="text">
+    <h3>Add a new client for <b>@Model.Name</b></h3>
+    <form action="/stylists/@Model.Id/clients" method="post">
+      <input id="stylistId" name="stylistId" type="hidden" value="@Model.Id">
+      <label for="clientName">Add client name:</label>
+      <input id="clientName" name="clientName" type="text">
       <button type="submit">Add this awesome client</button>
     </form>
 
-    <a href="/stylists/@Model["stylists"].Id">Back to @Model["stylists"].Name</a>
+    <a href="/stylists/@Model.Id">Back to @Model.Name</a>
     <br>
     <a href="/stylists">All stylists</a>
 
