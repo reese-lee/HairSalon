@@ -7,17 +7,12 @@
     <link rel='stylesheet' href='~/css/styles.css' type="text/css">
   </head>
   <body>
-    <h1></h1>
+    <h1>New Client:</h1>
     <h3>Add a new client for <strong>@Model["stylists"].Name</strong></h3>
-    <form action="/stylists/@Model["stylists"].Id/clients/new" method="post">
-      <input id="stylistId" name="stylistId" type="hidden" value="@Model.Id">
-      <label for="name">Add client name:</label>
-      <input id="name" name="name" type="text">
+    <p>@Model["clients"].Name</p>
 
-      <button type="submit">Add this awesome client</button>
-    </form>
 
-    <a href="/stylists/@Model.Id">Back to @Model["stylists"].Id</a>
+    <a href="/stylists/@Model["stylists"].Id">Back to @Model["stylists"].Id</a>
     <a href="/stylists">All stylists</a>
 
   </body>

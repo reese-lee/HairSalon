@@ -7,24 +7,46 @@ namespace HairSalon.Controllers
 {
   public class ClientsController : Controller
   {
-    [HttpPost("/stylists/{id}/clients/new")]
-    public ActionResult New(int stylistId)
+    // routes to new client page
+    [HttpGet("/stylists/{stylistId}/clients/new")]
+    public ActionResult New(string name, int stylistId, int id)
     {
-      Stylist newStylist = Stylist.Find(stylistId);
-      // Client myClient = new Client(name, stylistId, id);
-      return View(newStylist);
-    }
-
-    [HttpGet("/stylists/{stylistId}/clients/{clientId}")]
-    public ActionResult New(int stylistId, int clientId)
-    {
-      Client client = Client.Find(clientId);
-      Dictionary<string, object> model = new Dictionary<string, object>();
       Stylist selectedStylist = Stylist.Find(stylistId);
+      Client client = new Client(name, stylistId, id);
+      client.Save();
+      Client.Find(stylistId);
+      Dictionary<string, object> model = new Dictionary<string, object>();
       model.Add("clients", client);
       model.Add("stylists", selectedStylist);
-      return View(model);
+      return View("Show", model);
     }
+
+    // routes to new client's page
+    [HttpPost("/stylists/{id}/clients/{clientId}")]
+    public ActionResult Show(string name, int stylistId, int id)
+    {
+      // Stylist selectedStylist = Stylist.Find(stylistId);
+      // Client client = new Client(name, stylistId, id);
+      // client.Save();
+      // Dictionary<string, object> model = new Dictionary<string, object>();
+      // model.Add("clients", client);
+      // model.Add("stylists", selectedStylist);
+      return View();
+    }
+
+    // [HttpGet("/stylists/{id}/clients/{clientId}")]
+    // public ActionResult New(string name, int stylistId, int id)
+    // {
+    //
+    //   Stylist selectedStylist = Stylist.Find(stylistId);
+    //   Client client = new Client(name, stylistId, id);
+    //   client.Save();
+    //   Dictionary<string, object> model = new Dictionary<string, object>();
+    //   model.Add("clients", client);
+    //   model.Add("stylists", selectedStylist);
+    //   return View(model);
+    // }
+
 
     // [HttpGet("/clients/{id}/new")]
     // public ActionResult New(int id)
