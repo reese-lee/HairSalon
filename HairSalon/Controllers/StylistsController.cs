@@ -33,12 +33,9 @@ namespace HairSalon.Controllers
     [HttpGet("/stylists/{id}")]
     public ActionResult Show(int id)
     {
-      Dictionary<string, object> model = new Dictionary <string, object>();
-      Stylist newStylist = Stylist.Find(id);
-      List<Client> myClients = newStylist.GetClients();
-      model.Add("stylist", newStylist);
-      model.Add("clients", myClients);
-      return View(model);
+      ViewBag.Stylists = Stylist.Find(id);
+      ViewBag.Clients = ViewBag.Stylists.GetClients();
+      return View();
     }
 
     [HttpPost("/stylists/{stylistId}/clients")]
