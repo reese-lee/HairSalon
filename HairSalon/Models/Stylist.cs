@@ -13,9 +13,9 @@ namespace HairSalon.Models
 
     public static List<Stylist> stylistList = new List<Stylist> {};
 
-    public Stylist
+    public Stylist()
     {
-      
+
     }
 
     public Stylist (string name, string specialty, int id = 0)
