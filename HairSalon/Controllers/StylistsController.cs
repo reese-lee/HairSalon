@@ -22,9 +22,9 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost("/stylists")]
-    public ActionResult Create(string name, string specialty)
+    public ActionResult Create(string name)
     {
-      Stylist newStylist = new Stylist(name, specialty);
+      Stylist newStylist = new Stylist(name);
       newStylist.Save();
       List<Stylist> myStylists = Stylist.GetAll();
       return View("Index", myStylists);
@@ -40,7 +40,7 @@ namespace HairSalon.Controllers
       model.Add("clients", myClients);
       return View(model);
     }
-    
+
     // [HttpGet("/stylists/{stylistId}/clients/new")]
     // public ActionResult New(string name, int stylistId, int id)
     // {

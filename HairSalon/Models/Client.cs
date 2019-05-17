@@ -17,6 +17,11 @@ namespace HairSalon.Models
 
     public static List<Client> restList = new List<Client> {};
 
+    public Client()
+    {
+
+    }
+
     public Client (string clientName, int stylistId)
     {
       ClientName = clientName;
@@ -161,6 +166,24 @@ namespace HairSalon.Models
       if (conn != null)
       {
         conn.Dispose();
+      }
+    }
+
+    public void Delete()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM clients WHERE id = @searchId;";
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = Id;
+      cmd.Parameters.Add(searchId);
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+          conn.Dispose();
       }
     }
 

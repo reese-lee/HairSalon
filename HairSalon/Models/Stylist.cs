@@ -7,7 +7,7 @@ namespace HairSalon.Models
   public class Stylist
   {
     public string Name { get; set; }
-    public string Specialty { get; set; }
+    // public string Specialty { get; set; }
     public int Id { get; set; }
     public List<Client> Clients { get; set; }
 
@@ -18,10 +18,10 @@ namespace HairSalon.Models
 
     }
 
-    public Stylist (string name, string specialty, int id = 0)
+    public Stylist (string name, int id=0)
     {
       Name = name;
-      Specialty = specialty;
+      // Specialty = specialty;
       Id = id;
       Clients = new List<Client> {};
     }
@@ -46,16 +46,16 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO stylists (name, specialty, id) VALUES (@name, @specialty, @id);";
+      cmd.CommandText = @"INSERT INTO stylists (name, id) VALUES (@name, @id);";
       MySqlParameter name = new MySqlParameter();
       name.ParameterName = "@name";
       name.Value = this.Name;
       cmd.Parameters.Add(name);
 
-      MySqlParameter specialty = new MySqlParameter();
-      specialty.ParameterName = "@specialty";
-      specialty.Value = this.Specialty;
-      cmd.Parameters.Add(specialty);
+      // MySqlParameter specialty = new MySqlParameter();
+      // specialty.ParameterName = "@specialty";
+      // specialty.Value = this.Specialty;
+      // cmd.Parameters.Add(specialty);
 
       MySqlParameter id = new MySqlParameter();
       id.ParameterName = "@id";
@@ -97,8 +97,8 @@ namespace HairSalon.Models
       {
         int id = rdr.GetInt32(0);
         string name = rdr.GetString(1);
-        string specialty = rdr.GetString(2);
-        Stylist newStylist = new Stylist(name, specialty, id);
+        // string specialty = rdr.GetString(2);
+        Stylist newStylist = new Stylist(name, id);
         allStylist.Add(newStylist);
       }
 
@@ -125,15 +125,15 @@ namespace HairSalon.Models
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
       int StylistId = 0;
       string StylistName = "";
-      string StylistSpecialty = "";
+      // string StylistSpecialty = "";
 
       while(rdr.Read())
       {
         StylistId = rdr.GetInt32(0);
         StylistName = rdr.GetString(1);
-        StylistSpecialty = rdr.GetString(2);
+        // StylistSpecialty = rdr.GetString(2);
       }
-      Stylist newStylist = new Stylist(StylistName, StylistSpecialty, StylistId);
+      Stylist newStylist = new Stylist(StylistName, StylistId);
       conn.Close();
       if (conn != null)
       {

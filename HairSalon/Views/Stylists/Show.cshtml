@@ -15,7 +15,7 @@
       <h1 class="headline">Big Dreams, <br> Big Hair Salon</h1>
       <em>See your selected stylist and their details here:</em>
       <h4><b>@Model["stylist"].Name</b></h4>
-      <h6><b>Specialty</b>: @Model["stylist"].Specialty</h6>
+
       <h6><b>Client list</b>:</h6>
 
     @if (Model["clients"].Count == 0)
@@ -26,7 +26,7 @@
     {
       @foreach (var client in @Model["clients"])
       {
-        <p>@client.ClientName</p>
+        <p><a href="/stylists/@Model["stylist"].Id/clients/@client.Id">@client.ClientName</a></p>
       }
     }
 

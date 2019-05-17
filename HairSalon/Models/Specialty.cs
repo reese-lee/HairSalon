@@ -4,35 +4,35 @@ using System;
 
 namespace HairSalon.Models
 {
-  public class Specialty
-  {
-    public string SpecialtyName { get; set; }
-    public int Id { get; set; }
-    public List<Specialty> Specialties { get; set; }
-
-    public static List<Stylist> stylistList = new List<Stylist> {};
-
-    public Specialty (string specialtyName)
-    {
-      Specialty = specialty;
-      Id = id;
-      Clients = new List<Client> {};
-    }
-
-    public override bool Equals(System.Object otherStylist)
-    {
-      if (!(otherStylist is Stylist))
-      {
-        return false;
-      }
-      else
-      {
-        Stylist newStylist = (Stylist) otherStylist;
-        bool idEquality = this.Id.Equals(newStylist.Id);
-        bool nameEquality = this.Name.Equals(newStylist.Name);
-        return (idEquality && nameEquality);
-      }
-    }
+  // public class Specialty
+  // {
+  //   public string SpecialtyName { get; set; }
+  //   public int Id { get; set; }
+  //   public List<Specialty> Specialties { get; set; }
+  //
+  //   public static List<Stylist> stylistList = new List<Stylist> {};
+  //
+  //   public Specialty (string specialtyName)
+  //   {
+  //     Specialty = specialty;
+  //     Id = id;
+  //     Clients = new List<Client> {};
+  //   }
+  //
+  //   public override bool Equals(System.Object otherStylist)
+  //   {
+  //     if (!(otherStylist is Stylist))
+  //     {
+  //       return false;
+  //     }
+  //     else
+  //     {
+  //       Stylist newStylist = (Stylist) otherStylist;
+  //       bool idEquality = this.Id.Equals(newStylist.Id);
+  //       bool nameEquality = this.Name.Equals(newStylist.Name);
+  //       return (idEquality && nameEquality);
+  //     }
+  //   }
 
     // public void Save()
     // {
@@ -179,5 +179,5 @@ namespace HairSalon.Models
     //     }
     // }
 
-  }
+  // }
 }
