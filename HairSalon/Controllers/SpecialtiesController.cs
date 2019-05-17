@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System;
 
-namespace HairSalon.Controllers
+namespace HairSalon.Models
 {
    public class SpecialtiesController : Controller
    {
@@ -14,9 +16,11 @@ namespace HairSalon.Controllers
      [HttpPost("/specialties")]
      public ActionResult Create(string specialtyName)
      {
+       Dictionary<string, object> model = new Dictionary <string, object>();
        Specialty newSpecialty = new Specialty(specialtyName);
-       List<Specialty> specialties = Specialty.Add();
-       return RedirectToAction("Index");
+       List<Specialty> specialties = Specialty.GetAll();
+       model.Add(newSpecialty);
+       return RedirectToAction("Index", model);
      }
    }
 }

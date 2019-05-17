@@ -12,10 +12,15 @@ namespace HairSalon.Models
 
     public static List<Stylist> stylistList = new List<Stylist> {};
 
+    public Specialty()
+    {
+
+    }
+
     public Specialty (string specialtyName)
     {
-      Specialty = specialty;
-      Id = id;
+      SpecialtyName = specialtyName;
+      // Id = id;
     }
   //
   //   public override bool Equals(System.Object otherStylist)
@@ -89,7 +94,7 @@ namespace HairSalon.Models
       {
         int id = rdr.GetInt32(0);
         string specialtyName = rdr.GetString(1);
-        Specialty newSpecialty = new Specialty(specialtyName, id);
+        Specialty newSpecialty = new Specialty(specialtyName);
         allSpecialty.Add(newSpecialty);
       }
 
@@ -177,5 +182,5 @@ namespace HairSalon.Models
     //     }
     // }
 
-  // }
+  }
 }

@@ -14,6 +14,20 @@
       <h2>View all specialties at this salon:</h2>
       list of specialties
 
+        @if(Model.Count == 0)
+        {
+          <p>please go back to add a specialty</p>
+        }
+        @if(Model.Count != 0)
+        {
+          @foreach(Specialty specialty in Model)
+          {
+            <p>@specialty.SpecialtyName</p>
+          }
+        }
+
+      <button type="button" class="btn btn-dark"><a href="/stylists">Back to stylists</a></button>
+
     </div>
   </body>
 </html>
