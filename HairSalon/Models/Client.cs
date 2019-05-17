@@ -136,33 +136,33 @@ namespace HairSalon.Models
         }
     }
 
-    // public void Edit(string newName)
-    // {
-    //   MySqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //   var cmd = conn.CreateCommand() as MySqlCommand;
-    //   cmd.CommandText = @"UPDATE clients SET name = @newName WHERE id = @searchId;";
-    //
-    //   MySqlParameter searchId = new MySqlParameter();
-    //   searchId.ParameterName = "@searchId";
-    //   searchId.Value = Id;
-    //   cmd.Parameters.Add(searchId);
-    //
-    //   MySqlParameter name = new MySqlParameter();
-    //   name.ParameterName = "@newName";
-    //   name.Value = newName;
-    //
-    //   cmd.Parameters.Add(name);
-    //   cmd.ExecuteNonQuery();
-    //   Name = newName;
-    //
-    //   conn.Close();
-    //
-    //   if (conn != null)
-    //   {
-    //     conn.Dispose();
-    //   }
-    // }
+    public void Edit(string newName)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE clients SET clientName = @newName WHERE id = @searchId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = Id;
+      cmd.Parameters.Add(searchId);
+
+      MySqlParameter clientName = new MySqlParameter();
+      clientName.ParameterName = "@newName";
+      clientName.Value = newName;
+
+      cmd.Parameters.Add(clientName);
+      cmd.ExecuteNonQuery();
+      ClientName = newName;
+
+      conn.Close();
+
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
 
  }
 }

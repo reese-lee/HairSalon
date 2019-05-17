@@ -13,6 +13,11 @@ namespace HairSalon.Models
 
     public static List<Stylist> stylistList = new List<Stylist> {};
 
+    public Stylist
+    {
+      
+    }
+
     public Stylist (string name, string specialty, int id = 0)
     {
       Name = name;
@@ -180,6 +185,31 @@ namespace HairSalon.Models
             conn.Dispose();
         }
     }
+
+    // public static void DeleteOne()
+    // {
+    //     MySqlConnection conn = DB.Connection();
+    //     conn.Open();
+    //     var cmd = conn.CreateCommand() as MySqlCommand;
+    //     cmd.CommandText = @"DELETE stylists.* FROM stylists WHERE stylist_id = @stylist_id;";
+    //
+    //     MySqlParameter stylistId = new MySqlParameter();
+    //     stylistId.ParameterName = "@stylist_id";
+    //     stylistId.Value = this.Id;
+    //     cmd.Parameters.Add(stylistId);
+    //     var rdr = cmd.ExecuteReader() as MySqlDataReader;
+    //
+    //     while(rdr.Read())
+    //     {
+    //         int stylistId = rdr.GetInt32(0);
+    //     }
+    //     cmd.ExecuteNonQuery();
+    //     conn.Close();
+    //     if (conn != null)
+    //     {
+    //         conn.Dispose();
+    //     }
+    // }
 
   }
 }
