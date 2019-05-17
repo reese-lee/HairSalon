@@ -7,19 +7,18 @@
     <link rel='stylesheet' href='~/css/styles.css' type="text/css">
     <title>Big Dreams, Big Hair Salon</title>
   </head>
-  <body>
-    <h1></h1>
-
+  <body class="container">
+    <h1 class="headline">Big Dreams, <br> Big Hair Salon</h1>
+    <!-- goes to /stylists page that displays all stylists -->
     <form action="/stylists" method="post">
       <input id="" name="" type="hidden" value="@Model">
       <label for="name">Add a stylist:</label>
       <input id="name" name="name" type="text">
       <label for="specialty">Add their specialty:</label>
       <input id="specialty" name="specialty" type="text">
-      <button type="submit">Add my talented stylist</button>
+      <button type="submit" class="btn btn-dark">Add my talented stylist</button>
     </form>
-    <a href="/stylists">View stylists</a>
-    <br>
-    <a href="/">Back to home</a>
+    <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists">View stylists</a></button>
+    <button type="button" class="btn btn-dark" id="buttons"><a href="/">Back to home</a></button>
   </body>
 </html>

@@ -1,4 +1,5 @@
 @using HairSalon.Models
+<!-- URL: stylists/{stylistId} -->
 
 <!DOCTYPE html>
 <html>
@@ -10,31 +11,28 @@
 </head>
 <body>
   <div class="container">
-
-      <h1>Big Dreams, Big Hair Salon</h1>
+      <!-- displays individual stylists and their info -->]
+      <h1 class="headline">Big Dreams, <br> Big Hair Salon</h1>
       <em>See your selected stylist and their details here:</em>
-      <h5>@Model["stylist"].Name</h5>
-      <h6>Specialty: @Model["stylist"].Specialty</h6>
-      <h6>Client list:</h6>
-    <ol>
+      <h4><b>@Model["stylist"].Name</b></h4>
+      <h6><b>Specialty</b>: @Model["stylist"].Specialty</h6>
+      <h6><b>Client list</b>:</h6>
+
     @if (Model["clients"].Count == 0)
     {
-      <p>Please add a client.</p>
+      <p>Please add a client by clicking the button below.</p>
     }
     @if(Model["clients"].Count != 0)
     {
-      <p>Clients:</p>
       @foreach (var client in @Model["clients"])
       {
-        <li>
-          <a href="/stylists/@Model["stylist"].Id/clients/@client.Id">@client.Name</a>
-        </li>
+        <p>@client.ClientName</p>
       }
     }
-    </ol>
-    <a href="/stylists/@Model["stylist"].Id/clients/new">Add a new client</a><br><br>
-    <a href="/stylist">Return to stylist list</a>
-    <a href="/">Return to homepage</a>
+
+    <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists/@Model["stylist"].Id/clients/new">Add a new client</a></button>
+    <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists">Return to stylist list</a></button>
+    <button type="button" class="btn btn-dark" id="buttons"><a href="/">Return to homepage</a></button>
   </div>
 </body>
 </html>

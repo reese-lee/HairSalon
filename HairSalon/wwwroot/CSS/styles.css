@@ -1,0 +1,28 @@
+body {
+  /* background-image: linear-gradient(to right, #f4428f, #e5e110); */
+  background-image: url("/img/bighair02.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-family: serif;
+  text-align: center;
+}
+
+.headline {
+  font-family: math;
+  font-size: 75px;
+  padding-top: 40px;
+  color: #b1b2b5;
+  font-style: italic;
+}
+
+#buttons {
+  margin: 20px;
+}
+
+/* .container {
+  color: #000000;
+  /* margin-top: 100px; */
+  padding: 15px;
+  background-color: #FFFFFF;
+  max-width: 60%;
+} */

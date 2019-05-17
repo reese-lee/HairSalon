@@ -9,27 +9,13 @@
     <link rel='stylesheet' href='~/css/styles.css' type="text/css">
   </head>
   <body>
-    <h1>New Client:</h1>
-    <h3>Add a new client for <strong>@Model["stylists"].Name</strong></h3>
-    <p>@Model["clients"].Name</p>
-
-    <ul>
-    @if (Model.Count == 0)
-    {
-      <p>Please add a client.</p>
-    }
-    @if(Model.Count != 0)
-    {
-      @foreach (Client client in Model)
-      {
-        <li><a href="/clients/@client.Id">@client.Name</a></li>
-      }
-    }
-    </ul>
-
-
-    <a href="/stylists/@Model["stylist"].Id">Back to @Model["stylist"].Id</a>
-    <a href="/stylists">All stylists</a>
-
+    <div class="container">
+    <h1 class="headline">Big Dreams, <br> Big Hair Salon</h1>
+    <h3>Add a new client for <strong>@Model["stylist"].Name</strong></h3>
+    <p>Just added: @Model["clients"].ClientName</p>
+    <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists/@Model["stylist"].Id">Back to @Model["stylist"].Name</a></button>
+    <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists/@Model["stylist"].Id/clients/new">Add another client</a></button>
+    <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists">All stylists</a></button>
+    </div>
   </body>
 </html>

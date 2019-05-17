@@ -6,19 +6,18 @@
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
     <link rel='stylesheet' href='~/css/styles.css' type="text/css">
   </head>
-  <body>
-    <h1></h1>
+  <body class="container">
+    <h1 class="headline">Big Dreams, <br> Big Hair Salon</h1>
     <h3>Add a new client for <b>@Model.Name</b></h3>
-    <form action="/stylists/@Model.Id/clients" method="post">
+    <form action="/stylists/@Model.Id/clients/new" method="post">
       <input id="stylistId" name="stylistId" type="hidden" value="@Model.Id">
       <label for="clientName">Add client name:</label>
       <input id="clientName" name="clientName" type="text">
-      <button type="submit">Add this awesome client</button>
+      <button type="submit" class="btn btn-dark" id="buttons">Add this awesome client</button>
     </form>
 
-    <a href="/stylists/@Model.Id">Back to @Model.Name</a>
-    <br>
-    <a href="/stylists">All stylists</a>
+    <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists/@Model.Id">Back to @Model.Name</a></button>
+    <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists">All stylists</a></button>
 
   </body>
 </html>
