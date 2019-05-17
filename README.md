@@ -1,6 +1,6 @@
 # _Hair Salon_
 
-#### _A program that allows the user to add their stylist employees and their clients, May 10, 2019._
+#### _A program that allows the user to add their stylist employees and their clients, May 17, 2019._
 
 #### By _**Reese Lee**_
 
@@ -9,6 +9,14 @@
 _A program for a hair salon owner to add their stylists, and those stylist's clients. An employee of that hair salon will be able to see the other employees, and each employee's clients._
 
 ## Setup/Installation Requirements
+
+_To set up the database in MySQL:
+
+* _> CREATE DATABASE reese_lee;
+* _> USE reese_lee;
+* _> CREATE TABLE clients (id serial PRIMARY KEY, clientName VARCHAR(255), stylist_id INT);
+* _> CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255), specialty VARCHAR(255));
+* _> CREATE TABLE assignments (id serial PRIMARY KEY, stylist_id INT, specialty_id INT)
 
 _To download and import the database:_
 
@@ -20,21 +28,16 @@ _To download and import the database:_
 
 _To clone and launch the application:_
 
-* _Clone from GitHub_
+* _Clone from GitHub
 * _$cd HairSalon.Solution/HairSalon_
+* _$git checkout specialty
 * _$dotnet restore to install packages from the .csproj file_
 * _$dotnet run to start the application_
 * _Launch [http://localhost:5000/](http://localhost:5000/) in your browser_
 
-## Specs
-
-| Behavior | Input | Output |
-| ------------- |:-------------:| -----:|
-
-
 ## Known Bugs
 
-_._
+_ 
 
 ## Support and contact details
 
