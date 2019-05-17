@@ -26,6 +26,13 @@ _To clone and launch the application:_
 * _$dotnet run to start the application_
 * _Launch [http://localhost:5000/](http://localhost:5000/) in your browser_
 
+_To set up the database in MySQL:
+
+*_> CREATE DATABASE reese_lee;
+*_> USE reese_lee;
+*_> CREATE TABLE clients (id serial PRIMARY KEY, clientName VARCHAR(255), stylist_id INT);
+*_> CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255), specialty VARCHAR(255));
+
 ## Specs
 
 | Behavior | Input | Output |
