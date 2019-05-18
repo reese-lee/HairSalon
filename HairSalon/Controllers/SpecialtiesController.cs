@@ -15,12 +15,12 @@ namespace HairSalon.Models
      }
 
      [HttpPost("/specialties")]
-     public ActionResult Create(string specialtyName)
+     public ActionResult Create(string type)
      {
-       Specialty newSpecialty = new Specialty(specialtyName);
+       Specialty newSpecialty = new Specialty(type);
        newSpecialty.Save();
        List<Specialty> specialties = Specialty.GetAll();
-       return View("Index", allSpecialties);
+       return View("Index", specialties);
      }
 
      // [HttpGet("/specialties/{id}")]

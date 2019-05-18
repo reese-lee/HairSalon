@@ -20,18 +20,18 @@ namespace HairSalon.Models
       // Id = id;
     }
 
-    public override bool Equals(System.Object otherStylist)
+    public override bool Equals(System.Object otherSpecialty)
     {
-      if (!(otherStylist is Stylist))
+      if (!(otherSpecialty is Specialty))
       {
         return false;
       }
       else
       {
-        Stylist newStylist = (Stylist) otherStylist;
-        bool idEquality = this.Id.Equals(newStylist.Id);
-        bool nameEquality = this.Name.Equals(newStylist.Name);
-        return (idEquality && nameEquality);
+        Specialty newSpecialty = (Specialty) otherSpecialty;
+        bool idEquality = this.Id.Equals(newSpecialty.Id);
+        bool typeEquality = this.Type.Equals(newSpecialty.Type);
+        return (idEquality && typeEquality);
       }
     }
 
@@ -44,7 +44,7 @@ namespace HairSalon.Models
 
       MySqlParameter type = new MySqlParameter();
       type.ParameterName = "@type";
-      type.Value = this.type;
+      type.Value = this.Type;
       cmd.Parameters.Add(type);
 
       MySqlParameter id = new MySqlParameter();
@@ -113,14 +113,14 @@ namespace HairSalon.Models
 
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
       int SpecialtyId = 0;
-      string type = "";
+      string SpecialtyType = "";
 
       while(rdr.Read())
       {
         SpecialtyId = rdr.GetInt32(0);
         SpecialtyType = rdr.GetString(1);
       }
-      Specialty newSpecialty = new Specialty(SpecialtyType, SpecialtyId);
+      Specialty newSpecialty = new Specialty(SpecialtyType);
       conn.Close();
       if (conn != null)
       {
@@ -137,11 +137,11 @@ namespace HairSalon.Models
        cmd.CommandText = @"INSERT INTO assignments (stylist_id, specialty_id) VALUES (@StylistId, @SpecialtyId);";
        MySqlParameter stylist_id = new MySqlParameter();
        stylist_id.ParameterName = "@StylistId";
-       stylist_id.Value = newStylist.GetId();
+       stylist_id.Value = newStylist.Id;
        cmd.Parameters.Add(stylist_id);
        MySqlParameter specialty_id = new MySqlParameter();
        specialty_id.ParameterName = "@SpecialtyId";
-       specialty_id.Value = _id;
+       specialty_id.Value = Id;
        cmd.Parameters.Add(specialty_id);
        cmd.ExecuteNonQuery();
        conn.Close();
@@ -164,9 +164,9 @@ namespace HairSalon.Models
       MySqlParameter specialtyId = new MySqlParameter();
       specialtyId.ParameterName = "@specialty_id";
       specialtyId.Value = this.Id;
-      cmd.Parameters.Add(stylistId);
+      cmd.Parameters.Add(specialtyId);
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
-      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      // MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
       List<Stylist> stylists = new List<Stylist>{};
       while(rdr.Read())
       {
