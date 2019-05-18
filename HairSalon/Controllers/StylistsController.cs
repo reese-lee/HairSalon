@@ -22,19 +22,19 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost("/stylists")]
-    public ActionResult Create(string name)
+    public ActionResult Create(string name, int id)
     {
-      Stylist newStylist = new Stylist(name);
+      Stylist newStylist = new Stylist(name, id);
       newStylist.Save();
       List<Stylist> myStylists = Stylist.GetAll();
       return View("Index", myStylists);
     }
 
     [HttpGet("/stylists/{id}")]
-    public ActionResult Show(int stylistId, int clientId)
+    public ActionResult Show(int id, int clientId)
     {
       Dictionary<string, object> model = new Dictionary <string, object>();
-      Stylist newStylist = Stylist.Find(stylistId);
+      Stylist newStylist = Stylist.Find(id);
       List<Client> myClients = newStylist.GetClients();
       Client client = Client.Find(clientId);
       model.Add("stylist", newStylist);
@@ -43,19 +43,5 @@ namespace HairSalon.Controllers
       return View(model);
     }
 
-    // [HttpGet("/stylists/{stylistId}/clients/new")]
-    // public ActionResult New(string name, int stylistId, int id)
-    // {
-    //   Client myClient = new Client(name, stylistId, id);
-    //   return RedirectToAction();
-    // }
-
-    // [HttpGet("/animals/SortByType")]
-    // public ActionResult SortByType()
-    // {
-    //   // Animal newAnimal = new Animal();
-    //   List<Animal> allSortedAnimals = Animal.SortByType();
-    //   return View(allSortedAnimals);
-    // }
   }
 }

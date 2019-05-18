@@ -7,6 +7,7 @@
   <meta charset='utf-8'>
   <title>Big Dreams, Big Hair Salon</title>
   <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='~/css/styles.css' type="text/css">
 </head>
 <body>
@@ -15,20 +16,20 @@
       <h1 class="headline">Big Dreams, <br> Big Hair Salon</h1>
       <em>See your selected stylist and their details here:</em>
       <h4><b>@Model["stylist"].Name</b></h4>
-
+      <h6><b>Specializes in</b>:</h6>
       <h6><b>Client list</b>:</h6>
 
-    @if (Model["clients"].Count == 0)
-    {
-      <p>Please add a client by clicking the button below.</p>
-    }
-    @if(Model["clients"].Count != 0)
-    {
-      @foreach (var client in @Model["clients"])
-      {
-        <p><a href="/stylists/@Model["stylist"].Id/clients/@client.Id">@client.ClientName</a></p>
-      }
-    }
+        @if (Model["clients"].Count == 0)
+        {
+          <p>Please add a client by clicking the button below.</p>
+        }
+        @if(Model["clients"].Count != 0)
+        {
+          @foreach (var client in @Model["clients"])
+          {
+            <p><a href="/stylists/@Model["stylist"].Id/clients/@client.Id">@client.ClientName</a></p>
+          }
+        }
     <button type="button" class="btn btn-dark"><a href="/stylists/@Model["stylist"].Id/clients/@Model["client"].Id">View new client details</a></button>
     <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists/@Model["stylist"].Id/clients/new">Add a new client</a></button>
     <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists">Return to stylist list</a></button>

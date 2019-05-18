@@ -8,21 +8,12 @@ body {
 }
 
 .headline {
-  font-family: math;
+  font-family: 'Abril Fatface', cursive;
   font-size: 75px;
   padding-top: 40px;
   color: #b1b2b5;
-  font-style: italic;
 }
 
 #buttons {
   margin: 20px;
 }
-
-/* .container {
-  color: #000000;
-  /* margin-top: 100px; */
-  padding: 15px;
-  background-color: #FFFFFF;
-  max-width: 60%;
-} */
