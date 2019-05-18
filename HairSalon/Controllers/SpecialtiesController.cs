@@ -23,19 +23,19 @@ namespace HairSalon.Models
        return View("Index", specialties);
      }
 
-     // [HttpGet("/specialties/{id}")]
-     //  public ActionResult Show(int id)
-     //  {
-     //    Dictionary<string, object> model = new Dictionary<string, object>();
-     //    Specialty thisSpecialty = Specialty.Find(id);
-     //    List<Stylist> stylistSpecialties = thisSpecialty.GetStylists();
-     //    List<Stylist> allStylists = Stylist.GetAll();
-     //    model.Add("specialty", thisSpecialty);
-     //    model.Add("stylistSpecialties", stylistSpecialties);
-     //    model.Add("allStylists", allStylists);
-     //    return View(model);
-     //  }
-     //
+     [HttpGet("/specialties/{id}")]
+      public ActionResult Show(int id)
+      {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        Specialty thisSpecialty = Specialty.Find(id);
+        List<Stylist> stylistSpecialties = thisSpecialty.GetStylists();
+        List<Stylist> allStylists = Stylist.GetAll();
+        model.Add("specialty", thisSpecialty);
+        model.Add("stylistSpecialties", stylistSpecialties);
+        model.Add("allStylists", allStylists);
+        return View(model);
+      }
+
      //  [HttpPost("/specialties/{specialtyId}/stylists/new")]
      //  public ActionResult AddStylist(int specialtyId, int stylistId)
      //  {
