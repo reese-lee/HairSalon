@@ -1,0 +1,20 @@
+@using HairSalon.Models
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset='utf-8'>
+    <title>Big Dreams, Big Hair Salon</title>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='~/css/styles.css' type="text/css">
+  </head>
+  <body>
+    <h1 class="headline">Big Dreams, <br> Big Hair Salon</h1>
+    <div class="container">
+      <h2>@Model["specialty"].Type</h2>
+
+      <button type="button" class="btn btn-dark"><a href="/stylists/new">Add stylists or specialties</a></button>
+      <button type="button" class="btn btn-dark"><a href="/">Back to homepage</a></button>
+    </div>
+  </body>
+</html>

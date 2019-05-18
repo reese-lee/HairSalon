@@ -24,14 +24,14 @@ namespace HairSalon.Models
      }
 
      [HttpGet("/specialties/{id}")]
-      public ActionResult Show(int id)
+      public ActionResult Show(int specialtyId)
       {
         Dictionary<string, object> model = new Dictionary<string, object>();
-        Specialty thisSpecialty = Specialty.Find(id);
-        List<Stylist> stylistSpecialties = thisSpecialty.GetStylists();
+        Specialty thisSpecialty = Specialty.Find(specialtyId);
+        // List<Stylist> stylistSpecialties = thisSpecialty.GetStylists();
         List<Stylist> allStylists = Stylist.GetAll();
         model.Add("specialty", thisSpecialty);
-        model.Add("stylistSpecialties", stylistSpecialties);
+        // model.Add("stylistSpecialties", stylistSpecialties);
         model.Add("allStylists", allStylists);
         return View(model);
       }

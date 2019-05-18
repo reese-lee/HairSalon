@@ -14,10 +14,10 @@ namespace HairSalon.Models
 
     }
 
-    public Specialty (string type)
+    public Specialty (string type, int id = 0)
     {
       Type = type;
-      // Id = id;
+      Id = id;
     }
 
     public override bool Equals(System.Object otherSpecialty)
@@ -53,6 +53,7 @@ namespace HairSalon.Models
       cmd.Parameters.Add(id);
       cmd.ExecuteNonQuery();
       Id = (int) cmd.LastInsertedId;
+
       conn.Close();
       if (conn != null)
       {
