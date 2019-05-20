@@ -15,6 +15,12 @@
 
     <h3>Edit your client here</h3>
 
+    <form action='/stylists/@Model["stylist"].Id/clients/@Model["client"].Id/edit' method='post'>
+    <label for="newName">Client name:</label>
+    <input id="newName" name="newName" type="text" value="@Model["client"].Name">
+    <button type='submit' class="btn btn-dark">Save Changes</button>
+</form>
+
     <p><a href="/" class="btn btn-dark">Back to home</a></p>
   </div>
 </body>

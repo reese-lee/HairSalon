@@ -14,17 +14,14 @@
     <h1 class="headline">Big Dreams, <br> Big Hair Salon</h1>
     <h2>This is a client of <b>@Model["stylist"].Name</b>:</h2>
       <h3>@Model["client"].ClientName</h3>
-
-      <form action="/stylists/@Model["stylist"].Id/clients/@Model["client"].Id/update" method="post">
-        <button type="submit" class="btn btn-light" id="buttons">Edit this client</button>
-      </form>
+        <button type="button" class="btn btn-light" id="buttons"><a href="/stylists/@Model["stylist"].Id/clients/@Model["client"].Id/edit>Edit this client</a></button>
 
       <form action="/stylists/@Model["stylist"].Id/clients/@Model["client"].Id/delete" method="post">
         <button type="submit" class="btn btn-light" id="buttons">Delete this client</button>
       </form>
-
-    <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists/@Model["stylist"].Name">Back to @Model["stylist"].Name</a></button>
-    <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists">Back to all stylists</a></button>
-
+    <div class="footer">
+      <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists/@Model["stylist"].Name">Back to @Model["stylist"].Name</a></button>
+      <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists">Back to all stylists</a></button>
+    </div>
   </body>
 </html>

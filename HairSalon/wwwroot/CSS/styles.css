@@ -1,7 +1,7 @@
 body {
   /* background-image: linear-gradient(to right, #f4428f, #e5e110); */
   font-family: 'Abril Fatface',
-  background-image: url("/img/bighair02.jpg");
+  background-image: url("/img/bighair01.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
   /* font-family: serif; */
@@ -17,4 +17,11 @@ body {
   font-size: 75px;
   padding-top: 40px;
   color: #b1b2b5;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 20px;
 }
