@@ -14,8 +14,34 @@
     <div class="container">
       <h2>@Model["specialty"].Type</h2>
 
-      <button type="button" class="btn btn-dark"><a href="/stylists/new">Add stylists or specialties</a></button>
-      <button type="button" class="btn btn-dark"><a href="/">Back to homepage</a></button>
+        @if (Model["stylists"].Count == 0)
+        {
+          <p>There are no stylists with this specialty yet! Add one below or return to homepage to add a new stylist.</p>
+        }
+        @if(Model["stylists"].Count != 0)
+        {
+          @foreach (Stylist stylist in Model["stylists"])
+          {
+            <p><a href='/specialty/@stylist.Id'>@stylist.Name</a></p>
+          }
+        }
+
+      <h5>Add one or more stylists with this specialty:</h5>
+      <form action='/specialties/@Model["specialty"].Id/stylist/new' method='post'>
+      <label for='stylistId'>Select a stylist</label>
+       <select id='stylistId' name='stylistId' type='text'>
+         @foreach (Stylist stylist in @Model["allStylists"])
+         {
+           <option value='@stylist.Id'>@stylist.Name</option>
+         }
+       </select>
+       <button type='submit'>Add</button>
+      </form>
+
+      <div class="footer">
+        <button type="button" class="btn btn-dark"><a href="/stylists/new">Add stylists or specialties</a></button>
+        <button type="button" class="btn btn-dark"><a href="/">Back to homepage</a></button>
+      </div>
     </div>
   </body>
 </html>
