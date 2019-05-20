@@ -45,5 +45,23 @@ namespace HairSalon.Models
      //    specialty.AddStylist(stylist);
      //    return RedirectToAction("Show",  new { id = specialtyId });
      //  }
+
+
+      [HttpGet("/specialty/delete")]
+      public ActionResult DeleteAll()
+      {
+        Specialty.ClearAll();
+        List<Specialty> allSpecialties = Specialty.GetAll();
+        return RedirectToAction("Index", allSpecialties);
+      }
+
+      [HttpGet("/specialty/{specialtyId}/delete")]
+      public ActionResult Destroy(int specialtyId)
+      {
+        Specialty specialty = Specialty.Find(specialtyId);
+        specialty.Delete();
+        List<Specialty> allSpecialties = Specialty.GetAll();
+        return RedirectToAction("Index", allSpecialties);
+      }
    }
 }

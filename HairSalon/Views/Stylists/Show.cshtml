@@ -30,10 +30,12 @@
             <p><a href="/stylists/@Model["stylist"].Id/clients/@client.Id">@client.ClientName</a></p>
           }
         }
-    <button type="button" class="btn btn-dark"><a href="/stylists/@Model["stylist"].Id/clients/@Model["client"].Id">View new client details</a></button>
-    <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists/@Model["stylist"].Id/clients/new">Add a new client</a></button>
-    <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists">Return to stylist list</a></button>
-    <button type="button" class="btn btn-dark" id="buttons"><a href="/">Return to homepage</a></button>
+    <div class="footer">
+      <button type="button" class="btn btn-dark"><a href="/stylists/@Model["stylist"].Id/clients/@Model["client"].Id">View new client details</a></button>
+      <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists/@Model["stylist"].Id/clients/new">Add a new client</a></button>
+      <button type="button" class="btn btn-dark" id="buttons"><a href="/stylists">Return to stylist list</a></button>
+      <button type="button" class="btn btn-dark" id="buttons"><a href="/">Return to homepage</a></button>
+    </div>
   </div>
 </body>
 </html>
