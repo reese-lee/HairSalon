@@ -45,8 +45,7 @@ namespace HairSalon.Models
      //    specialty.AddStylist(stylist);
      //    return RedirectToAction("Show",  new { id = specialtyId });
      //  }
-
-
+     
       [HttpGet("/specialty/delete")]
       public ActionResult DeleteAll()
       {

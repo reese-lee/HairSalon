@@ -118,7 +118,7 @@ namespace HairSalon.Models
       var cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"SELECT * FROM stylists WHERE id = "+id+";";
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-  
+
       while(rdr.Read())
       {
         stylist.Id = rdr.GetInt32(0);
@@ -175,6 +175,23 @@ namespace HairSalon.Models
         if (conn != null)
         {
             conn.Dispose();
+        }
+    }
+
+    public void Delete()
+    {
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+        var cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"DELETE FROM stylists WHERE id = @stylist_id; DELETE FROM assignments WHERE stylist_id = @stylist_id; DELETE FROM clients WHERE stylistId = @stylist_id;";
+        MySqlParameter stylistIdParameter = new MySqlParameter();
+        stylistIdParameter.ParameterName = "@stylist_id";
+        stylistIdParameter.Value = this.Id;
+        cmd.Parameters.Add(stylistIdParameter);
+        cmd.ExecuteNonQuery();
+        if (conn != null)
+        {
+          conn.Close();
         }
     }
 
