@@ -117,17 +117,8 @@ namespace HairSalon.Models
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"SELECT * FROM stylists WHERE id = "+id+";";
-
-      // MySqlParameter searchId = new MySqlParameter();
-      // searchId.ParameterName = "@searchId";
-      // searchId.Value = id;
-      // cmd.Parameters.Add(searchId);
-
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-      // int StylistId = 14;
-      // string StylistName = "";
-      // string StylistSpecialty = "";
-
+  
       while(rdr.Read())
       {
         stylist.Id = rdr.GetInt32(0);
