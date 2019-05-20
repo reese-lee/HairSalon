@@ -101,28 +101,28 @@ namespace HairSalon.Models
 
     public void Save()
     {
-        MySqlConnection conn = DB.Connection();
-        conn.Open();
-        var cmd = conn.CreateCommand() as MySqlCommand;
-        cmd.CommandText = @"INSERT INTO clients (id, clientName, stylist_id) VALUES (@id, @clientName, @stylist_id);";
-        MySqlParameter clientName = new MySqlParameter();
-        clientName.ParameterName = "@clientName";
-        clientName.Value = this.ClientName;
-        cmd.Parameters.Add(clientName);
-        MySqlParameter stylistId = new MySqlParameter();
-        stylistId.ParameterName = "@stylist_id";
-        stylistId.Value = this.StylistId;
-        cmd.Parameters.Add(stylistId);
-        MySqlParameter id = new MySqlParameter();
-        id.ParameterName = "@id";
-        id.Value = this.Id;
-        cmd.ExecuteNonQuery();
-        Id = (int) cmd.LastInsertedId;
-        conn.Close();
-        if (conn != null)
-        {
-            conn.Dispose();
-        }
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO clients (id, clientName, stylist_id) VALUES (@id, @clientName, @stylist_id);";
+      MySqlParameter clientName = new MySqlParameter();
+      clientName.ParameterName = "@clientName";
+      clientName.Value = this.ClientName;
+      cmd.Parameters.Add(clientName);
+      MySqlParameter stylistId = new MySqlParameter();
+      stylistId.ParameterName = "@stylist_id";
+      stylistId.Value = this.StylistId;
+      cmd.Parameters.Add(stylistId);
+      MySqlParameter id = new MySqlParameter();
+      id.ParameterName = "@id";
+      id.Value = this.Id;
+      cmd.ExecuteNonQuery();
+      Id = (int) cmd.LastInsertedId;
+      conn.Close();
+      if (conn != null)
+      {
+          conn.Dispose();
+      }
     }
 
     public void Edit(string newName)
@@ -131,22 +131,17 @@ namespace HairSalon.Models
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"UPDATE clients SET clientName = @newName WHERE id = @searchId;";
-
       MySqlParameter searchId = new MySqlParameter();
       searchId.ParameterName = "@searchId";
       searchId.Value = Id;
       cmd.Parameters.Add(searchId);
-
       MySqlParameter clientName = new MySqlParameter();
       clientName.ParameterName = "@newName";
       clientName.Value = newName;
-
       cmd.Parameters.Add(clientName);
       cmd.ExecuteNonQuery();
       ClientName = newName;
-
       conn.Close();
-
       if (conn != null)
       {
         conn.Dispose();
@@ -167,7 +162,7 @@ namespace HairSalon.Models
       conn.Close();
       if (conn != null)
       {
-          conn.Dispose();
+        conn.Dispose();
       }
     }
 

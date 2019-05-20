@@ -28,14 +28,14 @@
 
       <h5>Add one or more stylists with this specialty:</h5>
       <form action='/specialties/@Model["specialty"].Id/stylist/new' method='post'>
-      <label for='stylistId'>Select a stylist</label>
+      <label for='stylistId'>Stylist:</label>
        <select id='stylistId' name='stylistId' type='text'>
-         @foreach (Stylist stylist in @Model["allStylists"])
+         @foreach (Stylist stylist in @Model["stylists"])
          {
            <option value='@stylist.Id'>@stylist.Name</option>
          }
        </select>
-       <button type='submit'>Add</button>
+       <button type='submit' class="btn btn-light">Add this stylist</button>
       </form>
 
       <div class="footer">
